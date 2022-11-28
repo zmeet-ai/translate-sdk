@@ -16,7 +16,7 @@ def get_signature_flytek(ts, app_id, api_key):
     signa = str(signa, 'utf-8')
     return signa
 
-def get_signature_yitu(timestamp, dev_id, dev_key):
+def get_signature_zmeet(timestamp, dev_id, dev_key):
     ts = str(timestamp)
     id_ts = str(dev_id) + ts
     signature = hmac.new(str(dev_key).encode(), id_ts.encode(),

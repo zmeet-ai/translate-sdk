@@ -8,7 +8,7 @@ import logging
 import time
 import argparse
 
-from client_auth_secret import get_signature_flytek, get_signature_yitu
+from client_auth_secret import get_signature_flytek, get_signature_zmeet
 
 
 async def main():
@@ -31,7 +31,7 @@ async def main():
         sys.exit(1)
     timestamp = str(int(time.time()))
 
-    signa = get_signature_yitu(timestamp, app_id, api_key)
+    signa = get_signature_zmeet(timestamp, app_id, api_key)
     querys = {
         "ts": timestamp,
         "appid": app_id,
