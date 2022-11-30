@@ -39,7 +39,7 @@ JSON
 ## 三、语言翻译API
 ### 2. 中文和英文互译API
 #### （1）URL
-**`https://ai.abcpen.com/v1/translate/zh-en`**
+**`https://translate.abcpen.com/v1/translate`**
 中文和英文的实时翻译
 
 #### （2）KEY
@@ -78,7 +78,7 @@ function verifySha256Sign(appKey, timestamp, appSecret) {
     return hashStr.toLowerCase();
 };
 
-async function ttsZmeet(text, model, appKey, timestamp, sign) {
+async function tts_translate(text, model, appKey, timestamp, sign) {
     let resTts = {
         message: "",
         code: "",
@@ -94,7 +94,7 @@ async function ttsZmeet(text, model, appKey, timestamp, sign) {
         };
         options = {
             method: 'POST',
-            uri: 'https://ai.abcpen.com/v1/translate/zh-en',
+            uri: 'https://translate.abcpen.com/v1/translate',
             form: jsonData,
             headers:{
                 "x-dev-id": appKey,
@@ -128,7 +128,7 @@ async function ttsZmeet(text, model, appKey, timestamp, sign) {
     let timestamp = Date.now()/1000 + "";
     let sign = verifySha256Sign(appKey, timestamp, appSecret);
     console.log("sign sha256 is: ", sign);
-    let tts2 = await ttsZmeet("防疫需求的大环境下，居家远程线上办公成为不少商务人士", "zh-en", appKey, timestamp, sign);
+    let tts2 = await tts_translate("防疫需求的大环境下，居家远程线上办公成为不少商务人士", "zh-en", appKey, timestamp, sign);
     console.log("translate-2: ", tts2);
 
 })();
