@@ -36,11 +36,11 @@ async def main():
         "ts": timestamp,
         "appid": app_id,
         "signa": signa,
-        "text": "防疫需求的大环境下，居家远程线上办公成为不少商务人",
+        "sentence": "防疫需求的大环境下，居家远程线上办公成为不少商务人",
         "mode": "zh-en"
 
     }
-    url = "https://{}/v1/translate/zh-en".format(args.url)
+    url = "https://{}/v1/translate/sentence".format(args.url)
     response = requests.post(url, querys)
     print(response.text)
 
