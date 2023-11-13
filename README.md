@@ -13,11 +13,12 @@
 * 编码：默认使用UTF-8，否则中文字符可能为乱码
 
 ### 2. 签名key
-客户首先需要与商务沟通，获得DevId和DevKey：
-* DevId
+客户首先需要与商务沟通，获得X-App-Key和X-App-Secret：
+
+* X-App-Key
 唯一的用户ID， 举例 "zmeet"；一般俗称为 application id 或 application key.
-* DevKey
-用户密匙， 举例 "^#BDYDEYE#", 一般俗称为 application secret.
+* X-App-Secret
+用户密匙， 举例 "ba9e07dc-1d79-4f7a-ab49-0205d3c0e073", 一般俗称为 application secret.
 
 ### 3. 请求数据格式
 JSON
@@ -26,13 +27,13 @@ JSON
 JSON
 
 ### 5.认证 请求参数说明
-在调用任何业务接口前，必须先取得授权，通过认证。取得授权的方式为在HTTP的请求体中输入正确的账号、时间戳及签名（x-dev-id、x-signature、x-request-send-timestamp）。说明如下：
+在调用任何业务接口前，必须先取得授权，通过认证。取得授权的方式为在HTTP的请求头中输入正确的账号、时间戳及签名（X-App-Key、X-App-Signature、X-Timestamp）。说明如下：
 
-| **序号** | **参数名**               | **类型** | **是否必填** | **说明**                                                     |
-| -------- | ------------------------ | -------- | ------------ | ------------------------------------------------------------ |
-| 1        | x-request-send-timestamp | string   | 是           | 请求发送时间戳                                               |
-| 2        | x-signature              | string   | 是           | 数字签名，HmacSHA256(x-dev-id + x-request-send-timestamp),用DevKey加密;32小写 |
-| 3        | x-dev-id                 | string   | 是           | 由服务方为接入方提供的devId, 一般俗称为app key               |
+| **序号** | **参数名**      | **类型** | **是否必填** | **说明**          |
+| -------- | --------------- | -------- | ------------ | ----------------- |
+| 1        | X-Timestamp     | string   | 是           | 请求发送时间戳    |
+| 2        | X-App-Signature | string   | 是           | 数字签名          |
+| 3        | X-App-Key       | string   | 是           | 一般俗称为app key |
 
 ### 6. **响应参数说明**
 | **序号** | **元素名称** | **父元素** | **类型** | **描述**                             |
@@ -45,7 +46,7 @@ JSON
 ### 1. 中文和主要国家语言的单条语句的直译（汉语，俄罗斯语，德语，日语，法语，意大利, 西班牙语,韩语等）
 #### （1）URL
 **`https://translate.abcpen.com/v1/translate/sentence`**
-中文和英文的实时翻译
+中文、英文、俄语等的实时互译
 
 #### （2）KEY
 * 使用之前，请向商务申请appKey和appSecret, 以正常服务请求。
